@@ -1,0 +1,17 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base :: layout(~{::title}, ~{::section})">
+      
+          	<meta charset="UTF-8" />
+      <head>
+	<title>Document</title>
+</head>
+<body>
+	<section >
+	<input  id="payment_filed" type="text"   class="form-control my-2"placeholder="enter amount here"/>
+ <div class="container text-center mt-4">
+ <button class="btn btn-success btn-block" onClick="paymentStart()">pay</button>
+</div>
+	</section>
+	</body>
+	</html>
+	

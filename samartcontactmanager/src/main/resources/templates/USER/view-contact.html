@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="USER/base :: layout(~{::title}, ~{::section})">
+      <head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<section>
+<h1>view contact</h1>
+
+<div class="container">
+<input onkeyup="search()"  id="search_field" type="text"  class="form-control" placeholder="search your contact" />
+<div class="result">
+<p>sbsjcbjbjcmcsbsjcscbwcjkxbb</p>
+</div>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each= "c:${contacts}">
+      <th th:text=" 'SCM2021'+${c.id}" scope="row">1</th>
+      <td>
+      <a th:href="@{'/user/contact/'+${c.id}}" >
+     <span th:text="${c.fname}"></span></a></td>
+      <td th:text="${c.email}"></td>
+      <td th:text="${c.phone}"></td>
+       <td>
+       
+      <a th:href="@{'/user/delete/'+${c.id}}" class="btn btn-danger">Delete</a>
+      
+      <form method="post" action="" th:action="@{'/user/update/'+${c.id}}" class="mt-2">
+       <button type="submit" class="btn btn-primary">Update</button>
+         </form>
+       </td>
+      
+    </tr>
+   
+  </tbody>
+</table>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li  th:if="${currentpage!=0}"        class="page-item"><a th:href="@{'/user/view-contact/'+${currentpage-1}}" class="page-link" href="#">Previous</a></li>
+   
+   
+    
+    <li th:Classappend="${currentpage==i-1?'active':''}" th:each="i:${#numbers.sequence(1,totalPages)}"  class="page-item"><a   th:href="@{'/user/view-contact/'+${i-1}}" class="page-link" href="#"><span th:text="${i}"></span></a></li>
+   
+   
+   
+    <li  th:if="${currentpage!=totalPages-1}"       class="page-item"><a th:href="@{'/user/view-contact/'+${currentpage+1}}" class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+
+</section>	
+</body>
+</html>

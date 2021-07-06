@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="USER/base :: layout(~{::title}, ~{::section})"><head>
+	<meta charset="UTF-8" />
+	<title>add-contact</title>
+</head>
+<body>
+ <section>
+    <div class="card mr-5">
+      <div class="card-body">
+      <div   th:if="${session.msg}" th:classappend="${session.msg.type}" class="alert" role="alert">
+    <p class="text-center" th:text="${session.msg.content}"></p>
+     <th:block th:text="${#session.removeAttribute('msg')}"> </th:block>
+</div>
+<div class="container text-center">
+   <img style="width:70px;" th:src="@{/img/add.png}"/>
+   </div>
+<h1 class="text-center">Add Contact</h1>
+    <div class="container-fluid mt-3">
+    <div class="row">
+    
+ <div class="col md-10 offset md-1">
+   <form action=""
+   enctype="multipart/form-data"
+   method="post"
+   th:action="@{/user/process-form}"
+   th:object="${contact}"
+   >
+   
+           <!-- FOR NAME -->
+   <div class="input-group">
+   
+   <div class="input-group-prepend">
+   
+    <div class="input-group-text">
+     <i class="fa fa-plus" ></i>    
+    </div>
+    </div>
+   <input  th:value="${contact.fname}"class="form-control" type="text" name="fname"  id="firstName" placeholder="Enter name here"/>
+       </div>  <div th:if="${#fields.hasErrors('fname')}">
+      <div class="alert-danger" th:errors="*{fname}"></div> 
+                    </div> 
+                  
+
+   
+   
+   
+             <!-- FOR NICKNAME-->
+          
+     <div class="input-group mt-3">
+   
+   <div class="input-group-prepend">
+   
+    <div class="input-group-text">
+     <i class="fa fa-user" ></i>    
+    </div>
+    </div>
+   <input  class="form-control" type="text" name="lname"  id="firstName" placeholder="Enter nick name here"/>
+   </div>
+                <!--END NAME-FIELD -->
+     
+   
+                <!-- FOR LNAME -->
+     
+     <div class="input-group mt-3">
+   
+   <div class="input-group-prepend">
+   
+    <div class="input-group-text">
+     <i class="fa fa-phone" ></i>    
+    </div>
+    </div>
+   <input th:value="${contact.phone}" class="form-control" type="text" name="phone"  id="phone" placeholder="Enter phone here"/>
+   </div>
+      <div th:if="${#fields.hasErrors('phone')}">
+      <div class="alert-danger" th:errors="*{phone}"></div> 
+                    </div> 
+                       <!--END NICKNAME-FIELD -->
+       
+   
+            <!-- FOR EMAIL -->
+         
+      <div class="input-group mt-3">
+   
+     <div class="input-group-prepend">
+   
+     <div class="input-group-text">
+         <i class="fas fa-at"></i>     
+     </div>
+     </div>
+     <input  class="form-control" type="email" name="email"  id="email" placeholder="Enter email here"/>
+     </div>
+                            <!--END EMAIL-FIELD -->
+            
+          
+          
+           <!-- FOR WORK -->
+          
+      <div class="input-group mt-3">
+   
+    <div class="input-group-prepend">
+   
+     <div class="input-group-text">
+     <i class="fa fa-briefcase" ></i>    
+    </div>
+    </div>
+    <input  class="form-control" type="text" name="work"  id="work" placeholder="Enter work here"/>
+    </div>
+                          <!--END WORK-FIELD -->
+          
+          
+          
+          <div class="form-group mt-3">
+          
+          <textarea placeholder="enter contact description here" name="description" id="description"  class="form-control" rows="3"></textarea>
+          
+          </div>
+          
+          
+          <div class="caustom-file">
+          <input type="file" name="profileImage"/>
+         
+          </div>
+          
+           <div class="text-center mt-2" >
+           
+           <button type="submit" class="btn btn-success btn-block">Add Contact</button>
+           <button type="reset" class="btn btn-danger btn-block">Reset</button>
+           
+           
+           </div>
+   </form>
+ 
+ </div>    
+    
+    
+    </div>
+    
+    
+    </div>
+   	
+    
+    </div>
+
+
+ </div>
+
+
+
+
+ </section>
+</body>
+</html>
