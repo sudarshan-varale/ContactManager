@@ -17,7 +17,7 @@ import com.company.entities.User;
 
 
 @RestController
-public class SearchContro
+public class SearchController 
 {
 	
 	@Autowired
