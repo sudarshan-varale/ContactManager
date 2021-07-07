@@ -52,8 +52,7 @@ public class HomeController
 	BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
      	
 	
-	@Autowired
-	AuthenticationManager authenticationManager;
+
 	@Autowired
 	DaoAuthenticationProvider daoAuthenticationProvider;
 	 SMS sms=new SMS();
@@ -204,17 +203,7 @@ public class HomeController
   	 return"signup";
    }
    
-   @PostMapping("/do-login" )
-   public String login(@ModelAttribute("user") Login login,Principal principle)
-   {
-	   System.out.println(login.getUsername());
-	   System.out.println(login.getPassword());
-	   
-	   Authentication authentication=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(),login.getPassword()));
-	   daoAuthenticationProvider.authenticate(authentication);  
-	   daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-	   daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder);
-	   return"login";
+  
 	   
    }
    
@@ -233,4 +222,3 @@ public class HomeController
    
    
    
-}

@@ -39,7 +39,7 @@ import com.razorpay.RazorpayException;
 @CrossOrigin
 @Controller 
 @RequestMapping("/user")
-public class UserController 
+public class UserController  
 {
 	
 	@Autowired
