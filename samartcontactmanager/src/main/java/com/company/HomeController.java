@@ -31,11 +31,7 @@ import com.company.dao.ContactRepo;
 
 import com.company.dao.UserRepository;
 import com.company.entities.Contact;
-import com.company.entities.Instructor;
-import com.company.entities.InstructorDetails;
-import com.company.entities.Login;
-import com.company.entities.SMS;
-import com.company.entities.SMSService;
+
 import com.company.entities.User;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
@@ -43,8 +39,6 @@ import com.twilio.type.PhoneNumber;
 
 
 
-
-@CrossOrigin
 @Controller
 public class HomeController 
 {
@@ -54,9 +48,6 @@ public class HomeController
 
 	@Autowired
 	DaoAuthenticationProvider daoAuthenticationProvider;
-	 SMS sms=new SMS();
-	 @Autowired
-	 SMSService smsService;
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -190,15 +181,6 @@ public class HomeController
    }
    */
    
-   @RequestMapping("/otp")
-   public String home1()
-   {
-      sms.setTo("89560563254");
-      sms.setMessage("sudarshan");
-      smsService.setFROM_NUMBER("8830301480");
-      smsService.send(sms);
-  	 return"signup";
-   }
    
   
 	   
