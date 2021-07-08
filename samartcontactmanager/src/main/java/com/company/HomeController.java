@@ -28,8 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.dao.ContactRepo;
-import com.company.dao.InstructorDetailsRepo;
-import com.company.dao.InstructorRepo;
+
 import com.company.dao.UserRepository;
 import com.company.entities.Contact;
 import com.company.entities.Instructor;
@@ -62,10 +61,7 @@ public class HomeController
 	UserRepository userRepository;
 	@Autowired
 	ContactRepo contactRepo;
-	@Autowired
-	InstructorDetailsRepo instructorDetailsRepo;
-	@Autowired
-	InstructorRepo instructorRepo;
+
 	
 	@Autowired
 	UserDetailsService userDetailsService;
@@ -143,11 +139,11 @@ public class HomeController
    }
    
    //  just practice one to one
-   @ResponseBody
-   @ RequestMapping("/prac")
-   public String check()
+   /*@ResponseBody
+ @ RequestMapping("/prac")
+  public String check()
    {
-	 /*
+	 
 	 //one to one 
 	Instructor instructor=new Instructor();
 	 instructor.setFirst_name("sudarshan");
@@ -160,8 +156,8 @@ public class HomeController
 
 	 instructor.setInstructorDetails(instructorDetails);
 	 instructorRepo.save(instructor);
-	 */
-	/*
+	 
+	
 	 //delete 
 	 Instructor instructor= instructorRepo.findById(14).get();
 	 instructorRepo.delete(instructor);
@@ -181,8 +177,8 @@ public class HomeController
 
 	 instructorDetails.setInstructor(instructor);
 	 instructorDetailsRepo.save( instructorDetails);
-	*/
-		 InstructorDetails instructorDetail=instructorDetailsRepo.findById(1).get();
+	
+		InstructorDetails instructorDetail=instructorDetailsRepo.findById(1).get();
 		 System.out.println("instructorDetails"+instructorDetail);
 		 
 		 System.out.println("Assosiate instructor:"+instructorDetail.getInstructor());
@@ -192,6 +188,7 @@ public class HomeController
 		 
 			 return"add record sucessfully";
    }
+   */
    
    @RequestMapping("/otp")
    public String home1()
